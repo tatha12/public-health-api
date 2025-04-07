@@ -32,3 +32,16 @@ def get_covid_cases(state: str, start: Optional[str] = None, end: Optional[str] 
             "deaths": r[3]
         } for r in rows
     ]
+
+@router.get("/api/v1/covid/last-update")
+def get_last_update():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT MAX(date) FROM covid_data;")
+    result = cur.fetchone()
+
+    cur.close()
+    conn.close()
+
+    return {"last_updated": result[0].isoformat() if result[0] else None}
