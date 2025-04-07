@@ -1,7 +1,11 @@
 from fastapi import FastAPI
+from app.routes import covid  # import new route module
+
 from app.db import get_db_connection
 
 app = FastAPI()
+
+app.include_router(covid.router)  # register route
 
 @app.get("/")
 def read_root():
