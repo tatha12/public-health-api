@@ -1,5 +1,7 @@
 __pycache__/
+.gitignore
 .env
+.out
 *.pyc
 *.db
 venv/
