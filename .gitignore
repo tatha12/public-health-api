@@ -1,7 +1,7 @@
 __pycache__/
 .gitignore
 .env
-.out
+*.out
 *.pyc
 *.db
 venv/
