@@ -1,11 +1,12 @@
 from fastapi import FastAPI
-from app.routes import covid  # import new route module
+from app.routes import covid, air_quality
 
 from app.db import get_db_connection
 
 app = FastAPI()
 
-app.include_router(covid.router)  # register route
+app.include_router(covid.router)
+app.include_router(air_quality.router)
 
 @app.get("/")
 def read_root():
