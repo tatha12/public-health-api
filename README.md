@@ -1,3 +1,48 @@
+### 📊 New Dataset: Air Quality Monitoring
+
+In addition to COVID-19 data, the API now supports querying **daily air quality levels** by state and date.
+
+| 📈 Field        | Description                              |
+|----------------|------------------------------------------|
+| `aqi_value`    | Numeric AQI value                        |
+| `aqi_category` | Category like "Good", "Unhealthy", etc.  |
+| `pollutant`    | Type of pollutant (PM2.5, Ozone, etc.)   |
+
+---
+
+### 🔗 API Endpoints (Updated)
+
+| Method | Endpoint                                                                 |
+|--------|--------------------------------------------------------------------------|
+| `GET`  | `/api/v1/covid/cases?state=CA&start=2023-01-01&end=2023-03-01`          |
+| `GET`  | `/api/v1/covid/last-update`                                             |
+| `GET`  | `/api/v1/air-quality?state=CA`                                          |
+| `GET`  | `/api/v1/air-quality?state=CA&date=2024-04-10`                          |
+
+---
+
+### 🧪 Load Air Quality Data (Simulated)
+
+The data can be loaded using the ETL script:
+
+```bash
+python scripts/load_air_quality_data.py
+```
+
+This pulls records from a static CSV (`data/sample_air_quality_data.csv`) and inserts into PostgreSQL (`air_quality` table).
+
+> Cron job automatically refreshes this data daily at 3:00 AM.
+
+---
+
+### 🚀 Multi-Dataset Ready
+
+This API is designed to support multiple public health data sources and is structured to allow easy addition of:
+
+- 🔬 Environmental data (EPA)
+- 🏥 Hospital stats
+- 🧬 Vaccination or case trends
+- 🌍 Geospatial data
 
 # 🩺 Public Health API
 
