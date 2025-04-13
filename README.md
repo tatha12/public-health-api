@@ -169,8 +169,6 @@ python scripts/load_covid_data.py
 This project is suitable for:
 
 - Research groups and policy analysts monitoring public health trends
-- Backend developer portfolio projects
-- NIW/EB1 evidence showing national interest or data transparency work
 - Open data advocates and public dashboards
 
 ---
