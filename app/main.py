@@ -1,9 +1,17 @@
 from fastapi import FastAPI
 from app.routes import covid, air_quality
-
 from app.db import get_db_connection
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(covid.router)
 app.include_router(air_quality.router)
